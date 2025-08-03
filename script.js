@@ -7,13 +7,15 @@ console.log("Hello World"); /* Test */
 // Let a certain number (intervall) respresent a choice.
 // If given number, it should return that number, hence choice.
 function getComputerChoice() {
-    let choice = Math.floor(Math.random() * 3); 
-    if (choice === 0) {
-        return "Computer pick: Rock";
-    } else if (choice === 1) {
-        return "Computer pick: Paper";
+    let computerSelection = Math.floor(Math.random() * 3); 
+    if (computerSelection === 0) {
+        return "Rock";
+    } else if (computerSelection === 1) {
+        return "Paper";
+    } else if (computerSelection === 2) {
+        return "Scissors";
     } else {
-        return "Computer pick: Scissors";
+        return "what?";
     }
 }
 console.log(getComputerChoice());
@@ -22,22 +24,23 @@ console.log(getComputerChoice());
 // Write prompt method to give user the ability to write the choice in input.
 // Depending on given input, a function will, like in step 1, give rock, paper or scissors as output.
 function getHumanChoice() {
-    let pick = prompt("Pick between Rock, Paper or Scissors");
-    if (pick === "Rock") {
-        return "Your pick: Rock";
-    } else if (pick === "Paper") {
-        return "Your pick: Paper";
-    } else if (pick === "Paper") {
-        return "Your pick: Scissors";
+    let humanSelection = prompt("Pick between Rock, Paper or Scissors");
+    if (humanSelection === "Rock") {
+        return "Rock";
+    } else if (humanSelection === "Paper") {
+        return "Paper";
+    } else if (humanSelection === "Scissors") {
+        return "Scissors";
     } else {
         return "Pick again, make sure to spell it right!";
     }
 }
 console.log(getHumanChoice());
 
+
 // 3. Declare the players score variables.
- let humanScore = 0;
- let computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 // 4. Write the logic to play a single round.
 // Function where it outputs scoreline from new variables: humanScore and computerScore
@@ -45,30 +48,31 @@ console.log(getHumanChoice());
 // If user input wins: add +1 point to user (humanScore +1 point)
 // If computer wins: add +1 point to computer (computerScore +1 point)
 // eg If getComputerChoice choose rock, and getHumanChoice choose paper, add 1+ point to computerScore...
-function playRound (humanChoice, computerChoice) {
-    if (humanChoice === "Rock" && computerChoice === "Paper") {
-        return "You lose! Paper beats Rock";
-    } else if (humanChoice === "Rock" && computerChoice === "Scissors") {
-        return "You win! Rock beats Scissors";
-    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-        return "You win! Paper beats Rock";
-    } else if (humanChoice === "Paper" && computerChoice === "Scissors") {
-        return "You lose! Scissors beats Paper";
-    } else if (humanChoice === "Scissors" && computerChoice === "Rock") {
-        return "You lose! Rock beats Scissors";
-    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-        return "You win! Scissors beat Paper";
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === "Rock" && computerChoice === "Scissors"
+       || humanChoice === "Paper" && computerChoice === "Rock"
+       || humanChoice === "Scissors" && computerChoice === "Paper") {
+       humanScore++;
+       result = `Your score: ${humanScore}`;
+       result = `You win! ${humanChoice} beats ${computerChoice}.`;
+    } else if (humanChoice === "Rock" && computerChoice === "Paper" 
+        || humanChoice === "Paper" && computerChoice === "Scissors"
+        || humanChoice === "Scissors" && computerChoice === "Rock") {
+        computerScore++;
+        result = `Computer score: ${computerScore}`;
+        result = `You lose! ${computerChoice} beats ${humanChoice}.`; 
     } else {
-        return "Tie! Both chose the same"
+        result = `It's a draw! You both have ${humanChoice}.`;
     }
+    return result;
 }
 console.log(humanScore);
 console.log(computerScore);
 
-const humanSelection = getHumanChoice ();
-const computerSelection = getComputerChoice ();
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+console.log(playRound(humanSelection, computerSelection));
 
 // 5. Write the logic to play the entire game.
 
