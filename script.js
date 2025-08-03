@@ -60,8 +60,6 @@ function playRound(humanChoice, computerChoice) {
     console.log(score); 
     
 }
-console.log(humanScore);
-console.log(computerScore);
 
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
