@@ -9,9 +9,8 @@ console.log("Hello World"); /* Test */
 const choices = ["Rock", "Paper", "Scissors"]
 
 function getComputerChoice() {
-    return choices[Math.floor(Math.random() * choices.length)]
+    return choices[Math.floor(Math.random() * choices.length)];
 }
-console.log(getComputerChoice());
 
 // 2. Write the logic to get the human choice.
 // Write prompt method to give user the ability to write the choice in input.
@@ -28,7 +27,6 @@ function getHumanChoice() {
         return "Pick again, make sure to spell it right!";
     }
 }
-console.log(getHumanChoice());
 
 
 // 3. Declare the players score variables.
@@ -42,22 +40,25 @@ let computerScore = 0;
 // If computer wins: add +1 point to computer (computerScore +1 point)
 // eg If getComputerChoice choose rock, and getHumanChoice choose paper, add 1+ point to computerScore...
 function playRound(humanChoice, computerChoice) {
-    if (humanChoice === "Rock" && computerChoice === "Scissors"
-       || humanChoice === "Paper" && computerChoice === "Rock"
-       || humanChoice === "Scissors" && computerChoice === "Paper") {
+    if ((humanChoice === "Rock" && computerChoice === "Scissors")
+       || (humanChoice === "Paper" && computerChoice === "Rock")
+       || (humanChoice === "Scissors" && computerChoice === "Paper")) {
        humanScore++;
-       result = `Your score: ${humanScore}`;
+       score = `Your score: ${humanScore}`;
        result = `You win! ${humanChoice} beats ${computerChoice}.`;
-    } else if (humanChoice === "Rock" && computerChoice === "Paper" 
-        || humanChoice === "Paper" && computerChoice === "Scissors"
-        || humanChoice === "Scissors" && computerChoice === "Rock") {
+    } else if ((humanChoice === "Rock" && computerChoice === "Paper") 
+        || (humanChoice === "Paper" && computerChoice === "Scissors")
+        || (humanChoice === "Scissors" && computerChoice === "Rock")) {
         computerScore++;
-        result = `Computer score: ${computerScore}`;
+        score = `Computer score: ${computerScore}`;
         result = `You lose! ${computerChoice} beats ${humanChoice}.`; 
     } else {
         result = `It's a draw! You both have ${humanChoice}.`;
+        score = "draw";
     }
-    return result;
+    console.log(result);
+    console.log(score); 
+    
 }
 console.log(humanScore);
 console.log(computerScore);
@@ -65,7 +66,10 @@ console.log(computerScore);
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
-console.log(playRound(humanSelection, computerSelection));
+console.log(`Your pick: ${humanSelection}`);
+console.log(`Computer pick: ${computerSelection}`);
+playRound(humanSelection, computerSelection);
+
 
 // 5. Write the logic to play the entire game.
 
