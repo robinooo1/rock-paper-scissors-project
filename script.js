@@ -39,35 +39,42 @@ let computerScore = 0;
 // If user input wins: add +1 point to user (humanScore +1 point)
 // If computer wins: add +1 point to computer (computerScore +1 point)
 // eg If getComputerChoice choose rock, and getHumanChoice choose paper, add 1+ point to computerScore...
-function playRound(humanChoice, computerChoice) {
-    if ((humanChoice === "Rock" && computerChoice === "Scissors")
-       || (humanChoice === "Paper" && computerChoice === "Rock")
-       || (humanChoice === "Scissors" && computerChoice === "Paper")) {
-       humanScore++;
-       score = `Your score: ${humanScore}`;
-       result = `You win! ${humanChoice} beats ${computerChoice}.`;
-    } else if ((humanChoice === "Rock" && computerChoice === "Paper") 
-        || (humanChoice === "Paper" && computerChoice === "Scissors")
-        || (humanChoice === "Scissors" && computerChoice === "Rock")) {
-        computerScore++;
-        score = `Computer score: ${computerScore}`;
-        result = `You lose! ${computerChoice} beats ${humanChoice}.`; 
-    } else {
-        result = `It's a draw! You both have ${humanChoice}.`;
-        score = "draw";
-    }
-    console.log(result);
-    console.log(score); 
-    
-}
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-console.log(`Your pick: ${humanSelection}`);
-console.log(`Computer pick: ${computerSelection}`);
-playRound(humanSelection, computerSelection);
 
 
 // 5. Write the logic to play the entire game.
+function playGame() {
+    function playRound(humanChoice, computerChoice) {
+        if ((humanChoice === "Rock" && computerChoice === "Scissors")
+           || (humanChoice === "Paper" && computerChoice === "Rock")
+           || (humanChoice === "Scissors" && computerChoice === "Paper")) {
+           humanScore++;
+           score1 = `Your score: ${humanScore}`;
+           score2 = `Computer score: ${computerScore}`;
+           score = score1 + " - " + score2;
+           result = `You win! ${humanChoice} beats ${computerChoice}.`;
+        } else if ((humanChoice === "Rock" && computerChoice === "Paper") 
+            || (humanChoice === "Paper" && computerChoice === "Scissors")
+            || (humanChoice === "Scissors" && computerChoice === "Rock")) {
+            computerScore++;
+            score1 = `Your score: ${humanScore}`;
+            score2 = `Computer score: ${computerScore}`;
+            score = score1 + " - " + score2;
+            result = `You lose! ${computerChoice} beats ${humanChoice}.`; 
+        } else {
+            score1 = `Your score: ${humanScore}`;
+            score2 = `Computer score: ${computerScore}`;
+            score = score1 + " - " + score2;
+            result = `It's a draw! You both have ${humanChoice}.`;
+        }
+        console.log(result);
+        console.log(score);     
+    }
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
+    console.log(`Your pick: ${humanSelection}`);
+    console.log(`Computer pick: ${computerSelection}`);
+    playRound(humanSelection, computerSelection);
+}
+
+playGame();
