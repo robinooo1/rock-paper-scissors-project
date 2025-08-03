@@ -6,17 +6,10 @@ console.log("Hello World"); /* Test */
 // Within the function it should have math.random to pick between the choices.
 // Let a certain number (intervall) respresent a choice.
 // If given number, it should return that number, hence choice.
+const choices = ["Rock", "Paper", "Scissors"]
+
 function getComputerChoice() {
-    let computerSelection = Math.floor(Math.random() * 3); 
-    if (computerSelection === 0) {
-        return "Rock";
-    } else if (computerSelection === 1) {
-        return "Paper";
-    } else if (computerSelection === 2) {
-        return "Scissors";
-    } else {
-        return "what?";
-    }
+    return choices[Math.floor(Math.random() * choices.length)]
 }
 console.log(getComputerChoice());
 
@@ -24,12 +17,12 @@ console.log(getComputerChoice());
 // Write prompt method to give user the ability to write the choice in input.
 // Depending on given input, a function will, like in step 1, give rock, paper or scissors as output.
 function getHumanChoice() {
-    let humanSelection = prompt("Pick between Rock, Paper or Scissors");
-    if (humanSelection === "Rock") {
+    let pick = prompt("Pick between Rock, Paper or Scissors");
+    if (pick === "Rock") {
         return "Rock";
-    } else if (humanSelection === "Paper") {
+    } else if (pick === "Paper") {
         return "Paper";
-    } else if (humanSelection === "Scissors") {
+    } else if (pick === "Scissors") {
         return "Scissors";
     } else {
         return "Pick again, make sure to spell it right!";
