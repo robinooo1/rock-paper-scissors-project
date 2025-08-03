@@ -17,7 +17,7 @@ function getComputerChoice() {
 // Depending on given input, a function will, like in step 1, give rock, paper or scissors as output.
 function getHumanChoice() {
     let pick = prompt("Pick between Rock, Paper or Scissors");
-    if (pick === "Rock") {
+    if (pick == "Rock") {
         return "Rock";
     } else if (pick === "Paper") {
         return "Paper";
@@ -42,6 +42,8 @@ let computerScore = 0;
 
 
 // 5. Write the logic to play the entire game.
+// Game plays the game for 5 rounds, no matter the score. 
+// After each round the score should update. After 5 rounds (6 round starts) the score should reset.
 function playGame() {
     function playRound(humanChoice, computerChoice) {
         if ((humanChoice === "Rock" && computerChoice === "Scissors")
@@ -75,6 +77,10 @@ function playGame() {
     console.log(`Your pick: ${humanSelection}`);
     console.log(`Computer pick: ${computerSelection}`);
     playRound(humanSelection, computerSelection);
+    console.log("________________________");
 }
 
-playGame();
+for(let i = 0; i <= 4; i++) {
+    playGame();
+}
+
