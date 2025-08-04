@@ -17,7 +17,7 @@ function getComputerChoice() {
 // Depending on given input, a function will, like in step 1, give rock, paper or scissors as output.
 function getHumanChoice() {
     let pick = prompt("Pick between Rock, Paper or Scissors");
-    if (pick == "Rock") {
+    if (pick === "Rock") {
         return "Rock";
     } else if (pick === "Paper") {
         return "Paper";
@@ -27,7 +27,6 @@ function getHumanChoice() {
         return "Pick again, make sure to spell it right!";
     }
 }
-
 
 // 3. Declare the players score variables.
 let humanScore = 0;
@@ -84,3 +83,4 @@ for(let i = 0; i <= 4; i++) {
     playGame();
 }
 
+/* Missing making humanChoice case insensitive! */
